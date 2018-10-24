@@ -9,38 +9,38 @@ import todolist.service.ToDoListService;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/todolist")
+@RequestMapping("/api/todolist")
 public class ToDoListController {
 
     @Autowired
     private ToDoListService service;
 
-    @GetMapping(path = "/get/{id}")
+    @GetMapping("/{id}")
     public ToDoList getById(@PathVariable long id) {
 
         return service.findById(id);
     }
 
 
-    @PutMapping(path = "/update/{id}")
+    @PutMapping("/{id}")
     public ToDoList update(@PathVariable Long id, @RequestBody ToDoListRequest toDoListReq) {
 
         return service.update(id, toDoListReq.getName(), toDoListReq.getContent());
     }
 
-    @PostMapping(path = "/add")
+    @PostMapping()
     public ToDoList add(@RequestBody ToDoList toDoList) {
 
         return service.save(toDoList.getName(), toDoList.getContent());
     }
 
-    @GetMapping(path = "/all")
+    @GetMapping("/all")
     public List<ToDoList> getAll() {
 
         return service.getAll();
     }
 
-    @DeleteMapping(path = "/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable long id) {
 
         service.delete(id);

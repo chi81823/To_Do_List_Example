@@ -15,7 +15,7 @@ $( document ).ready(function() {
     	$.ajax({
 			type : "POST",
 			contentType : "application/json",
-			url : window.location + "api/todolist/add",
+			url : window.location + "api/todolist/",
 			data : JSON.stringify(formData),
 			dataType : 'json',
 			success : function(result) {

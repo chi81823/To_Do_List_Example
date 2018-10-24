@@ -29,7 +29,7 @@ $( document ).ready(function() {
 
         $.ajax({
             type : "DELETE",
-            url : window.location + "api/todolist/delete/" + todolistId,
+            url : window.location + "api/todolist/" + todolistId,
             success: function(resultMsg){
             $("#resultMsgDiv").html("<p style='background-color:#67597E; color:white; padding:20px 20px 20px 20px'>" +
                                          "ToDoList with Id=" + todolistId +
