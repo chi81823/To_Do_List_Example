@@ -3,7 +3,6 @@ package todolist.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import todolist.domain.entity.ToDoList;
-import todolist.domain.http.request.ToDoListRequest;
 import todolist.service.ToDoListService;
 
 import java.util.List;
@@ -23,15 +22,15 @@ public class ToDoListController {
 
 
     @PutMapping("/{id}")
-    public ToDoList update(@PathVariable Long id, @RequestBody ToDoListRequest toDoListReq) {
+    public ToDoList update(@PathVariable Long id, @RequestBody ToDoList toDoList) {
 
-        return service.update(id, toDoListReq.getName(), toDoListReq.getContent());
+        return service.update(id, toDoList.getName(), toDoList.getContent());
     }
 
     @PostMapping()
     public ToDoList add(@RequestBody ToDoList toDoList) {
 
-        return service.save(toDoList.getName(), toDoList.getContent());
+        return service.save(toDoList);
     }
 
     @GetMapping("/all")

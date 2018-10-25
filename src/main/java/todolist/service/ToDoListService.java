@@ -16,11 +16,8 @@ public class ToDoListService {
         return repo.findById(id).orElseThrow(null);
     }
 
-    public ToDoList save(String name, String content) {
-        return repo.save(ToDoList.Builder.create()
-                                         .name(name)
-                                         .content(content)
-                                         .build());
+    public ToDoList save(ToDoList toDoList) {
+        return repo.save(toDoList);
     }
 
     public List<ToDoList> getAll() {
