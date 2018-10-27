@@ -59,7 +59,7 @@ $( document ).ready(function() {
                     var custList = "";
                     $.each(result, function(i, todolist){
                         var todolist = "- ToDoList with Id = " + i + ", name = " + todolist.name + ", content = " + todolist.content + "<br>";
-                        $('#getResultDiv .list-group').append(todolist)
+                        $('#getResultDiv .list').append(todolist)
                     });
                     console.log("Success: ", result);
 

@@ -13,7 +13,7 @@ public class ToDoListService {
     private ToDoListRepository repo;
 
     public ToDoList findById(long id) {
-        return repo.findById(id).orElseThrow(null);
+        return repo.findById(id).orElse(null);
     }
 
     public ToDoList save(ToDoList toDoList) {
