@@ -5,7 +5,6 @@ $( document ).ready(function() {
 		ajaxPost();
 	});
     
-    
     function ajaxPost(){
     	var formData = {
     		name : $("#name").val(),
@@ -19,15 +18,6 @@ $( document ).ready(function() {
 			data : JSON.stringify(formData),
 			dataType : 'json',
 			success : function(result) {
-
-					$("#postResultDiv").html("<p style='background-color:#7FA7B0; color:white; padding:20px 20px 20px 20px'>" + 
-												"Post Successfully! <br>" +
-												"---> ToDoList: Name = " +
-												result.name +
-												" ,Content = " +
-												 result.content +
-												 "</p>");
-
 				console.log(result);
 			},
 			error : function(e) {
