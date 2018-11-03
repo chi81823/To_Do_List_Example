@@ -3,6 +3,7 @@ package todolist.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import todolist.domain.entity.ToDoList;
+import todolist.exception.NotFound;
 import todolist.service.ToDoListService;
 
 import java.util.List;
@@ -15,14 +16,14 @@ public class ToDoListController {
     private ToDoListService service;
 
     @GetMapping("/{id}")
-    public ToDoList getById(@PathVariable long id) {
+    public ToDoList getById(@PathVariable long id) throws NotFound {
 
         return service.findById(id);
     }
 
 
     @PutMapping("/{id}")
-    public ToDoList update(@PathVariable Long id, @RequestBody ToDoList toDoList) {
+    public ToDoList update(@PathVariable Long id, @RequestBody ToDoList toDoList) throws NotFound {
 
         return service.update(id, toDoList.getName(), toDoList.getContent());
     }

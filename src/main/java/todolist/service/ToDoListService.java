@@ -3,7 +3,7 @@ package todolist.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import todolist.domain.entity.ToDoList;
-import todolist.exception.NotFoundEntity;
+import todolist.exception.NotFound;
 import todolist.repository.ToDoListRepository;
 
 import java.util.List;
@@ -13,8 +13,8 @@ public class ToDoListService {
     @Autowired
     private ToDoListRepository repo;
 
-    public ToDoList findById(long id) {
-        return repo.findById(id).orElseThrow(() -> new NotFoundEntity(id));
+    public ToDoList findById(long id) throws NotFound {
+        return repo.findById(id).orElseThrow(() -> new NotFound(id));
     }
 
     public ToDoList save(ToDoList toDoList) {
@@ -25,7 +25,7 @@ public class ToDoListService {
         return repo.findAll();
     }
 
-    public ToDoList update(long id, String name, String content) {
+    public ToDoList update(long id, String name, String content) throws NotFound {
         ToDoList toDoList = findById(id);
         toDoList.setName(name);
         toDoList.setContent(content);

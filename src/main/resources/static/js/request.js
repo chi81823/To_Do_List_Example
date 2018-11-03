@@ -45,7 +45,7 @@ $(document).ready(function() {
                 console.log(result);
             },
             error : function(e) {
-                alert("Error!")
+                alert("Error! 找不到此ID")
                 console.log("ERROR: ", e);
             }
         });
