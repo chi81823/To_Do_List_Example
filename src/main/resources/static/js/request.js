@@ -93,7 +93,7 @@ $(document).ready(function() {
     });
 
     function resetData(){
-           	$("#name").val("");
-           	$("#content").val("");
+           	$('#name').val();
+           	$('#content').val();
         }
 })
