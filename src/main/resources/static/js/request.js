@@ -25,6 +25,29 @@ $(document).ready(function() {
         window.location.reload();
 	});
 
+	$('#todolistParamForm').submit(function(event) {
+    		event.preventDefault();
+    		var formData = {
+                name : $('#paramName').val(),
+                content :  $('#paramContent').val()
+            }
+
+            $.ajax({
+                type : 'GET',
+                url : window.location + 'api/todolist/requestParam',
+                data : 'name=' + formData.name + '&content=' + formData.content,
+                success : function(result) {
+                    console.log(result);
+                },
+                error : function(e) {
+                    alert('Error!')
+                    console.log('ERROR: ', e);
+                }
+            });
+            resetData();
+            window.location.reload();
+    	});
+
 	$('#todolistUpdateForm').submit(function(event) {
         event.preventDefault();
     	var formData = {

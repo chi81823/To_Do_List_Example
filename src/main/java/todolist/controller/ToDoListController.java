@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/todolist")
 public class ToDoListController {
+    private static final String PATH_VAR_TO_DO_LIST = "/requestParam";
 
     @Autowired
     private ToDoListService service;
@@ -44,6 +45,12 @@ public class ToDoListController {
     public void deleteById(@PathVariable long id) {
 
         service.delete(id);
+    }
+
+    @GetMapping(PATH_VAR_TO_DO_LIST)
+    public ToDoList addGet(@RequestParam String name, @RequestParam String content) {
+
+        return service.save(ToDoList.Builder.create().name(name).content(content).build());
     }
 
 
