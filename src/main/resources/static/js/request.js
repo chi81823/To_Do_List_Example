@@ -1,5 +1,32 @@
 $(document).ready(function() {
 
+    $('#todolistEnterForm').bind('keypress', function(event) {
+		event.preventDefault();
+
+        var formData = {
+            name : $('#enterName').val()
+        }
+        if(event.which == 13 || event.keyCode == 13){
+
+            $.ajax({
+                type : 'POST',
+                contentType : 'application/json',
+                url : window.location + 'api/todolist/',
+                data : JSON.stringify(formData),
+                dataType : 'json',
+                success : function(result) {
+                    console.log(result);
+                },
+                error : function(e) {
+                    alert('Error!')
+                    console.log('ERROR: ', e);
+                }
+            });
+            resetData();
+            window.location.reload();
+        }
+	});
+
     $('#todolistForm').submit(function(event) {
 		event.preventDefault();
 		var formData = {
@@ -25,7 +52,7 @@ $(document).ready(function() {
         window.location.reload();
 	});
 
-	$('#aaa').click(function(event) {
+	$('#noFormButton').click(function(event) {
     		event.preventDefault();
     		var formData = {
                 name : $('#name1').val(),
