@@ -14,7 +14,7 @@ public class ToDoListService {
     private ToDoListRepository repo;
 
     public ToDoList findById(long id) throws NotFound {
-        return repo.findById(id).orElseThrow(() -> new NotFound(id));
+        return repo.findById(id).orElseThrow(() -> new NotFound());
     }
 
     public ToDoList save(ToDoList toDoList) {
