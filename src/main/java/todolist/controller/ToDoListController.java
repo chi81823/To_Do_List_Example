@@ -30,7 +30,7 @@ public class ToDoListController {
     }
 
     @PostMapping()
-    public ToDoList add(@RequestBody ToDoList toDoList) {
+    public ToDoList add(ToDoList toDoList) {
 
         return service.save(toDoList);
     }
