@@ -20,7 +20,7 @@ public class ToDoList {
     private String content;
 
     @Column(name = "date")
-    private String date;
+    private Timestamp date;
 
     public Long getId() {
         return id;
@@ -46,11 +46,11 @@ public class ToDoList {
         this.content = content;
     }
 
-    public String getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
@@ -59,7 +59,7 @@ public class ToDoList {
         private Long id;
         private String name;
         private String content;
-        private String date;
+        private Timestamp date;
 
         private Builder() {}
 
@@ -80,7 +80,7 @@ public class ToDoList {
             return this;
         }
 
-        public Builder date(String date) {
+        public Builder date(Timestamp date) {
             this.date = date;
             return this;
         }

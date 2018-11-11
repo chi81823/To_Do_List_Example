@@ -36,7 +36,7 @@ $(document).ready(function () {
         }
 
         var formData = {
-            date: $('#date').val(),
+            date: new Date().getTime(),
             name: $('#name').val(),
             content: $('#content').val()
         }
@@ -165,6 +165,7 @@ $(document).ready(function () {
             $.each(result, function (index, todolist) {
                 var toDoListRow = '<tr>' + index +
                     '<td>' + todolist.id + '</td>' +
+                    '<td>' + new Date(todolist.date).toLocaleString() + '</td>' +
                     '<td>' + todolist.name + '</td>' +
                     '<td>' + todolist.content + '</td>' +
                     '<td>' +
