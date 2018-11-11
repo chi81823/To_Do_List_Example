@@ -2,6 +2,7 @@ package todolist.domain.entity;
 
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 
 @Entity
@@ -17,6 +18,9 @@ public class ToDoList {
 
     @Column(name = "content")
     private String content;
+
+    @Column(name = "date")
+    private Timestamp date;
 
     public Long getId() {
         return id;
@@ -42,11 +46,20 @@ public class ToDoList {
         this.content = content;
     }
 
+    public Timestamp getDate() {
+        return date;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
+    }
+
 
     public static final class Builder {
         private Long id;
         private String name;
         private String content;
+        private Timestamp date;
 
         private Builder() {}
 
@@ -67,11 +80,17 @@ public class ToDoList {
             return this;
         }
 
+        public Builder date(Timestamp date) {
+            this.date = date;
+            return this;
+        }
+
         public ToDoList build() {
             ToDoList toDoList = new ToDoList();
             toDoList.setId(id);
             toDoList.setName(name);
             toDoList.setContent(content);
+            toDoList.setDate(date);
             return toDoList;
         }
     }
