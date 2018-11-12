@@ -29,38 +29,30 @@ $(document).ready(function () {
 
     $('#todolistForm').submit(function (event) {
         event.preventDefault();
-        
-        function testValid(now) {
-            var regex = /^(2)((\d{3})\/(0[13578]|1[02])\/(0[1-9]|[12]\d|3[01])|(\d{3})\/(0[469]|11)\/(0[1-9]|[12]\d|30)|(\d{3})\/(02)\/(0[1-9]|[12]\d))$/;
-            return regex.test(now);
-        }
 
         var formData = {
             date: new Date().getTime(),
             name: $('#name').val(),
             content: $('#content').val()
         }
-        
-        if (testValid(date)) {
-            $.ajax({
-                type: 'POST',
-                contentType: 'application/json',
-                url: window.location + 'api/todolist/',
-                data: JSON.stringify(formData),
-                dataType: 'json',
-                success: function (result) {
-                    console.log(result);
-                },
-                error: function (e) {
-                    alert('Error!')
-                    console.log('ERROR: ', e);
-                }
-            });
-            resetData();
-            window.location.reload();
-        } else {
-            alert('時間錯誤');
-        }
+
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json',
+            url: window.location + 'api/todolist/',
+            data: JSON.stringify(formData),
+            dataType: 'json',
+            success: function (result) {
+                console.log(result);
+            },
+            error: function (e) {
+                alert('Error!')
+                console.log('ERROR: ', e);
+            }
+        });
+        resetData();
+        window.location.reload();
+
     });
 
 
@@ -164,6 +156,7 @@ $(document).ready(function () {
         success: function (result) {
             $.each(result, function (index, todolist) {
                 var toDoListRow = '<tr>' + index +
+                    '<td align="center"><img src="../img/3line.png" height="30" width="30"></td>' +
                     '<td>' + todolist.id + '</td>' +
                     '<td>' + new Date(todolist.date).toLocaleString() + '</td>' +
                     '<td>' + todolist.name + '</td>' +
