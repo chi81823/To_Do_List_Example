@@ -160,11 +160,10 @@ $(document).ready(function () {
                     '<td>' + todolist.id + '</td>' +
                     '<td>' + new Date(todolist.date).toLocaleString() + '</td>' +
                     '<td>' + todolist.name + '</td>' +
-                    '<td>' + todolist.content + '</td>' +
-                    '<td>' +
-                    '<input type="hidden" id="deleteId" value=' + todolist.id + '>' +
-                    '<a>' + '<button type="submit" >Delete</button>' + '</a>' +
-                    '</td>' + '</tr>';
+                    '<td>' + '<input type="hidden" id="deleteId" value=' + todolist.id + '>' +
+                    '<a>' + '<button type="submit" >Delete</button>' + '</a>' + '</td>' +
+                    '</tr>' +
+                    '<tr><td></td><td colspan="4">' + todolist.content + '</td></tr>';
                 $('#toDoListTable tbody').append(toDoListRow);
             });
         },
