@@ -1,3 +1,6 @@
+import {DateTime} from '../../node_modules/luxon';
+import $ from '../../node_modules/jquery'
+
 $(document).ready(function () {
 
     $('#todolistEnterForm').bind('keypress', function (event) {
@@ -30,11 +33,20 @@ $(document).ready(function () {
     $('#todolistForm').submit(function (event) {
         event.preventDefault();
 
-        var formData = {
+        var formData = {            
             date: new Date().getTime(),
             name: $('#name').val(),
             content: $('#content').val()
         }
+
+        //var estimated = $('#estimated').val();
+
+        function datetimeToLong(estimated){
+            return DateTime.local(estimated).toMillis();
+            // 2018-11-01T00:00z
+        }
+
+        console.log(datetimeToLong($('#estimated').val()));
 
         $.ajax({
             type: 'POST',
