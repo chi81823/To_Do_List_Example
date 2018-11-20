@@ -1,5 +1,5 @@
-import $ from 'jquery';
-import { DateTime } from 'luxon';
+var $ = require('jquery');
+var DateTime = require('luxon');
 
 $(document).ready(function () {
 
