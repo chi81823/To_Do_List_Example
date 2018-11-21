@@ -22,6 +22,9 @@ public class ToDoList {
     @Column(name = "date")
     private Timestamp date;
 
+    @Column(name = "estimated")
+    private String estimated;
+
     public Long getId() {
         return id;
     }
@@ -54,12 +57,21 @@ public class ToDoList {
         this.date = date;
     }
 
+    public String getEstimated() {
+        return estimated;
+    }
+
+    public void setEstimated(String estimated) {
+        this.estimated = estimated;
+    }
+
 
     public static final class Builder {
         private Long id;
         private String name;
         private String content;
         private Timestamp date;
+        private String estimated;
 
         private Builder() {}
 
@@ -85,12 +97,18 @@ public class ToDoList {
             return this;
         }
 
+        public Builder estimated(String estimated) {
+            this.estimated = estimated;
+            return this;
+        }
+
         public ToDoList build() {
             ToDoList toDoList = new ToDoList();
             toDoList.setId(id);
             toDoList.setName(name);
             toDoList.setContent(content);
             toDoList.setDate(date);
+            toDoList.setEstimated(estimated);
             return toDoList;
         }
     }
