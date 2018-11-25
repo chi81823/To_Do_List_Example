@@ -13,8 +13,8 @@ public class ToDoListService {
     @Autowired
     private ToDoListRepository repo;
 
-    public ToDoList findById(long id) throws NotFound {
-        return repo.findById(id).orElseThrow(() -> new NotFound());
+    public ToDoList findById(Long id) throws NotFound {
+        return repo.findById(id).orElseThrow(NotFound::new);
     }
 
     public ToDoList save(ToDoList toDoList) {
@@ -25,7 +25,7 @@ public class ToDoListService {
         return repo.findAll();
     }
 
-    public ToDoList update(long id, String name, String content) throws NotFound {
+    public ToDoList update(Long id, String name, String content) throws NotFound {
         ToDoList toDoList = findById(id);
         toDoList.setName(name);
         toDoList.setContent(content);
@@ -34,5 +34,10 @@ public class ToDoListService {
 
     public void delete(long id) {
         repo.deleteById(id);
+    }
+
+    public List<ToDoList> findEstimated(Long start, Long end) throws NotFound {
+        return repo.findByEstimatedLessThanEqualAndEstimatedGreaterThanEqual(start, end)
+                   .orElseThrow(NotFound::new);
     }
 }

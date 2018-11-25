@@ -17746,16 +17746,21 @@ exports.Settings = Settings;
 
 },{}],3:[function(require,module,exports){
 var $ = require('jquery');
-var DateTime = require('luxon');
+var { DateTime } = require('luxon');
 
 $(document).ready(function () {
 
-
     $('#todolistForm').submit(function (event) {
-        event.preventDefault();
+        event.preventDefault();        
+
+        function datetimeToLong(estimated) {
+            return DateTime.fromISO(estimated).toMillis();
+        }
+
+        var dataEstime = $('#estimated').val();
 
         var formData = {
-            estimated: $('#estimated').val(),
+            estimated: datetimeToLong(dataEstime),
             date: new Date().getTime(),
             name: $('#name').val(),
             content: $('#content').val()
@@ -17807,7 +17812,7 @@ $(document).ready(function () {
                 var toDoListRow = '<tr>' + index +
                     '<td align="center"><img src="../img/3line.png" height="30" width="30"></td>' +
                     '<td>' + todolist.id + '</td>' +
-                    '<td>' + todolist.estimated + '</td>' +
+                    '<td>' + new Date(todolist.estimated).toLocaleString() + '</td>' +
                     '<td>' + new Date(todolist.date).toLocaleString() + '</td>' +
                     '<td>' + todolist.name + '</td>' +
                     '<td>' + '<input type="hidden" id="deleteId" value=' + todolist.id + '>' +

@@ -23,7 +23,7 @@ public class ToDoList {
     private Timestamp date;
 
     @Column(name = "estimated")
-    private String estimated;
+    private Timestamp estimated;
 
     public Long getId() {
         return id;
@@ -57,11 +57,11 @@ public class ToDoList {
         this.date = date;
     }
 
-    public String getEstimated() {
+    public Timestamp getEstimated() {
         return estimated;
     }
 
-    public void setEstimated(String estimated) {
+    public void setEstimated(Timestamp estimated) {
         this.estimated = estimated;
     }
 
@@ -71,7 +71,7 @@ public class ToDoList {
         private String name;
         private String content;
         private Timestamp date;
-        private String estimated;
+        private Timestamp estimated;
 
         private Builder() {}
 
@@ -97,7 +97,7 @@ public class ToDoList {
             return this;
         }
 
-        public Builder estimated(String estimated) {
+        public Builder estimated(Timestamp estimated) {
             this.estimated = estimated;
             return this;
         }
