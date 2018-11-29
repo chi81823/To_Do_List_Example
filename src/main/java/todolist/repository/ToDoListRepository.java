@@ -9,7 +9,7 @@ import java.util.Optional;
 
 
 public interface ToDoListRepository extends JpaRepository<ToDoList, Long> {
-    Optional<List<ToDoList>> findByEstimatedLessThanEqualAndEstimatedGreaterThanEqual(Long timeStart, Long timeEnd);
+    Optional<List<ToDoList>> findByEstimatedGreaterThanEqualAndEstimatedLessThanEqual(Timestamp start, Timestamp end);
     Optional<List<ToDoList>> findByCreateDateLessThanEqual(Timestamp time);
 
 }

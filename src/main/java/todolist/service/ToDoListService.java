@@ -6,6 +6,7 @@ import todolist.domain.entity.ToDoList;
 import todolist.exception.NotFound;
 import todolist.repository.ToDoListRepository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -36,8 +37,18 @@ public class ToDoListService {
         repo.deleteById(id);
     }
 
-    public List<ToDoList> findEstimated(Long start, Long end) throws NotFound {
-        return repo.findByEstimatedLessThanEqualAndEstimatedGreaterThanEqual(start, end)
-                   .orElseThrow(NotFound::new);
+    public List<ToDoList> findCreateDate(Long time) {
+        return repo.findByCreateDateLessThanEqual(toTimestamp(time))
+                   .orElse(null);
+
+    }
+
+    public List<ToDoList> findEstimated(Long start, Long end) {
+        return repo.findByEstimatedGreaterThanEqualAndEstimatedLessThanEqual(toTimestamp(start), toTimestamp(end))
+                   .orElse(null);
+    }
+
+    private Timestamp toTimestamp(Long val) {
+        return new Timestamp(val);
     }
 }
